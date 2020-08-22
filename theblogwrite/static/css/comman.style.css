@@ -1,0 +1,9 @@
+.text-responsive {
+  font-size: calc(100% + 1vw + 1vh);
+}
+
+.letter-spacing{
+  font-size: 18px;
+  letter-spacing: 5px;
+}
+

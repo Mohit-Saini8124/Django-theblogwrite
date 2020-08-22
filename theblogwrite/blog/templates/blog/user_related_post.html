@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{view.kwargs.username}}, Related Post list | TheBlogWrite {% endblock title %}
+
+{% block content %}
+<div class="container">
+    <section class="author-box container mt-4">
+    {% for post in posts|slice:":1" %}
+        <div class="row rounded py-2 bg-light">
+            <div class="col-lg-3 text-center">
+                <img class="img-thumbnail rounded-circle img-block" src="{{ post.author.profile.image.url }} ">
+            </div>
+            <div class="col-lg-9 mt-3 text-center ">
+                <div class="author-inline-block">
+                    <h4 class="author-box-title">
+                        <span class="author-name text-responsive">{{view.kwargs.username}}</span>
+                        <small class="author-social-links small">
+                            {% if post.author.profile.twitterid %}
+                      <a href="https://twitter.com/{{post.author.profile.twitterid}}" class="author-social-link twitter small"
+                        target="_blank">
+                        <i class="fab fa-2x fa-twitter "></i>
+                      </a>
+                      {% endif %}
+                      {% if post.author.profile.facebookid %}
+                      <a href="https://facebook.com/{{post.author.profile.facebookid}}" class="author-social-link facebook small" target="_blank">
+                        <i class="fab fa-2x fa-facebook "></i>
+                      </a>
+                      {% endif %}
+                      {% if post.author.profile.instagramid %}
+                      <a href="https://instagram.com/{{post.author.profile.instagramid}}" class="author-social-link facebook small" target="_blank">
+                        <i class="fab fa-2x fa-instagram "></i>
+                      </a>
+                      {% endif %}
+                        </small>
+                    </h4>
+                </div>
+                <div class="author-box-content">
+                    <p class=" text-justify text-secondary">
+                        {{post.author.profile.about_us}}
+                    </p>
+                    {% if post.author.profile.hobbie %}
+                    <p class="text-monospace font-weight-bolder mt-1 h6 text-left">Hobbies</p>
+                    <p class=" text-justify text-secondary">
+                        {{post.author.profile.hobbie}}
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </section> 
+    <div class="row grid">
+    {% for post in posts %}
+        <figure class="effect-chico">
+			{% if post.thumbnail %}
+                <img src="{{ post.thumbnail.url }}" alt="" class="img-fluid">
+			{% endif %}
+            <figcaption>
+                <h2>{{post.title}}
+                </h2>
+                <p> Last updated : {{post.date_posted|date:"d M, Y"}}</p>
+                <a href="{% url 'post-detail' post.pk post.slug %}">View more</a>
+            </figcaption>
+        </figure>
+    {% endfor %}
+    </div>
+    <div class="container text-lg-center">
+        {% if is_paginated %}
+            {% if page_obj.has_previous %}
+                <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}
+{% block footers %}
+<footer class="page-footer font-small badge-secondary letter-spacing mt-3">
+  <div class="footer-copyright text-center text-white-50 py-4 ">© 2020 Copyright:
+    <a class="text-decoration-none text-white" href="#">  theblogwrite.com </a>
+  </div>
+</footer>
+{% endblock footers %}

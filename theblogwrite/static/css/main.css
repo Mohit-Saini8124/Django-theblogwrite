@@ -1,0 +1,535 @@
+/* ---------------start header---------------------- */
+
+.header-letter-spacing {
+  font-size: 55px;
+  letter-spacing: 8px;
+}
+/* ---------------End header---------------------- */
+
+/* ---------------------nav profile-------------- */
+.navbar-dark .navbar-nav .active > .nav-link,
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link.show,
+.navbar-dark .navbar-nav .show > .nav-link {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: bold;
+}
+
+.nav-link img {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  margin: -8px 0;
+  float: left;
+  margin-right: 10px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  margin-right: 4px;
+  overflow: hidden;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+
+.card-img-top-ful {
+  width: 100%;
+  height: 38vw;
+  object-fit: cover;
+}
+
+.rounded-circle {
+  border-radius: 50% !important;
+}
+
+img {
+  vertical-align: middle;
+  border-style: none;
+  object-fit: inherit;
+}
+
+.post-author {
+  display: inline-block;
+}
+.post-date {
+  color: #000000;
+  display: inline-block;
+  float: right;
+}
+/* ------------------end nav profile------------------------ */
+
+
+/* ------------ start Profile ------------ */
+.letter-spacing {
+  font-size: 17px;
+  letter-spacing: 5px;
+}
+
+.img-block{
+  width: 220px;
+  height: 180px;
+
+}
+
+/* ------------ end Profile------------ */
+
+/* ------------ user wise post list ------------------ */
+
+.grid {
+  position: relative;
+  margin: 0 auto;
+  padding: 1em 0 4em;
+  max-width: 1000px;
+  list-style: none;
+  text-align: center;
+}
+
+/* Common style */
+.grid figure {
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 10px 1%;
+  min-width: 320px;
+  max-width: 480px;
+  max-height: 360px;
+  width: 48%;
+  background: #3085a3;
+  text-align: center;
+  cursor: pointer;
+}
+
+.grid figure img {
+  position: relative;
+  display: block;
+  min-height: 100%;
+  max-width: 100%;
+  opacity: 0.8;
+}
+.grid figure figcaption {
+  padding: 2em;
+  color: #fff;
+  text-transform: capitalize;
+  font-size: 1.25em;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.grid figure figcaption::before,
+.grid figure figcaption::after {
+  pointer-events: none;
+}
+
+.grid figure figcaption,
+.grid figure figcaption > a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Anchor will cover the whole item by default */
+/* For some effects it will show as a button */
+.grid figure figcaption > a {
+  z-index: 1000;
+  text-indent: 200%;
+  white-space: nowrap;
+  font-size: 0;
+  opacity: 0;
+}
+
+.grid figure h2 {
+  /* word-spacing: 0.15em; */
+  letter-spacing: 1.2px;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.grid figure h2 span {
+  font-weight: 800;
+}
+
+.grid figure h2,
+.grid figure p {
+  margin-top:-20px ;
+}
+
+.grid figure p {
+  letter-spacing: 1px;
+  font-size: 68.5%;
+}
+
+figure.effect-chico img {
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: scale(1.12);
+  transform: scale(1.12);
+}
+
+figure.effect-chico:hover img {
+  opacity: 0.5;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+figure.effect-chico figcaption {
+  padding: 3em;
+}
+
+figure.effect-chico figcaption::before {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  bottom: 30px;
+  left: 30px;
+  border: 1px solid #fff;
+  content: "";
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+figure.effect-chico figcaption::before,
+figure.effect-chico p {
+  opacity: 0;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+}
+
+figure.effect-chico h2 {
+  padding: 20% 0 20px 0;
+}
+
+figure.effect-chico p {
+  margin: 0 auto;
+  max-width: 200px;
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+}
+
+figure.effect-chico:hover figcaption::before,
+figure.effect-chico:hover p {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+@media screen and (max-width: 50em) {
+  .content {
+    text-align: center;
+  }
+  .grid figure {
+    display: inline-block;
+    float: none;
+    margin: 10px auto;
+    width: 100%;
+  }
+}
+/* ------------------ end user wise post list ----------- */
+
+
+/* -------------blog- card --------------- */
+
+.blog-post-card{
+  text-align: justify;
+  background-clip: content-box;
+  min-height: 130px;
+  margin-bottom: 15px;
+}
+.blog-post-card .card-shadow{
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  
+}
+
+.post-card-img-top{
+  width: 100%;
+  height: 12rem;
+  object-fit: inherit;
+}
+
+.post-details-card-img-top{
+  width: 100%;
+  height: 27rem;
+  object-fit: inherit;
+}
+
+
+/* ------------------end blog---------------- */
+
+/* =======================Recent Post =================== */
+
+.recent {
+  height: auto;
+  width: 100%;
+  padding: 50px 20px 20px;
+}
+.recent h1 {
+  font-weight: 600;
+  letter-spacing: 6px;
+}
+.recent .card-shadow{
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  
+}
+.recent .card-imgs{
+  width: 100%;
+  height: 10rem;
+  object-fit: inherit;
+}
+
+/* ======================= end Recent Post =================== */
+
+/*  ===========================search --------------------------------- */
+            
+.ibox-content {
+    background-color: #FFFFFF;
+    color: inherit;
+    padding: 15px 20px 20px 20px;
+    border-color: #E7EAEC;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 0px;  
+  }
+
+.search-form {
+    margin-top: 10px;
+}
+
+.search-result h3 {
+    margin-bottom: 0;
+    color: #1E0FBE;
+}
+
+.search-result .search-link {
+    color: #006621;
+}
+
+.search-result p {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.hr-line-dashed {
+    border-top: 1px dashed #E7EAEC;
+    color: #ffffff;
+    background-color: #ffffff;
+    height: 1px;
+    margin: 20px 0;
+}
+
+.ibox-content h2 {
+    font-size: 24px;
+    font-weight: 100;
+}
+  
+                      
+/* ---------------------------------end Search---------------------------- */
+
+
+/* ------------------------------Comment style Here -----------------------*/
+
+.comments-details button.btn.dropdown-toggle,
+.comments-details .total-comments {
+  font-size: 18px;
+  font-weight: 500;
+  color: #a8a4a4;
+}
+.comments-details {
+  padding: 15px 15px;
+}
+.comments .comments .dropdown,
+.comments .dropup {
+  position: relative;
+}
+.comments button {
+  background-color: transparent;
+  border: none;
+}
+.comments .comment-box {
+  width: 100%;
+  float: left;
+  height: 100%;
+  background-color: #f7f9fd;
+  padding: 10px 10px 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+.comments .add-comment {
+  background-color: transparent;
+  border: none;
+  position: relative;
+  margin-bottom: 50px;
+}
+.comments .commenter-pic {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  border-radius: 100%;
+  border: 2px solid #fff;
+  overflow: hidden;
+  background-color: #fff;
+}
+.comments .add-comment .commenter-name {
+  width: 100%;
+  padding-left: 75px;
+  position: absolute;
+  top: 20px;
+  left: 0px;
+}
+.comments .add-comment input {
+  border-top: 0px;
+  border-bottom: 1px solid #ccc;
+  border-left: 0px;
+  border-right: 0px;
+  outline: 0px;
+  box-shadow: none;
+  border-radius: 0;
+  width: 100%;
+  padding: 0;
+  font-weight: normal;
+}
+.comments .add-comment input:focus {
+  border-color: #03a9f4;
+  border-width: 2px;
+}
+.comments .add-comment button[type="submit"] {
+  background-color: #17a2b8;
+  color: #fff;
+  margin-right: 0px;
+}
+.comments .add-comment button {
+  background-color: #f5f5f5;
+  margin: 10px 5px;
+  font-size: 14px;
+  text-transform: uppercase;
+  float: right;
+}
+.comments .commenter-name .comment-time {
+  font-weight: normal;
+  margin-left: 8px;
+  font-size: 15px;
+}
+
+.comments p.comment-content {
+  font-size: 15px;
+  /* border-bottom: 1px solid #ddd; */
+  padding: 0px 0px 15px;
+}
+.comments .commenter-name {
+  display: inline-block;
+  position: relative;
+  top: -20px;
+  left: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.comments .comment-meta {
+  font-size: 14px;
+  color: #333;
+  padding: 2px 5px 0px;
+  line-height: 20px;
+  float: right;
+}
+.comments .reply-box {
+  display: none;
+}
+.comments .replied {
+  background-color: #fff;
+  width: 95%;
+  float: right;
+  margin-top: 15px;
+}
+
+/*======Responsive CSS=======*/
+@media (max-width: 767px) {
+  .comments .commenter-name {
+    font-size: 13px;
+    top: -5px;
+  }
+  .comments .commenter-pic {
+    width: 40px;
+    height: 40px;
+  }
+  .comments .commenter-name a {
+    display: block;
+  }
+  .comments .commenter-name .comment-time {
+    display: block;
+    margin-left: 0px;
+  }
+}
+
+/* ------------------------------End Comment style here------------ */
+
+
+
+
+
+
+
+
+/* ---------------contact_us---------------------- */
+.contact-us {
+  padding: 50px 0px;
+}
+.section-title h2 {
+  color: #000000;
+  font-size: 30px;
+  line-height: 20px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  border-bottom: 2px solid #d4d4d4;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+.section-title h3 {
+  color: #000000;
+  margin-bottom: 10px;
+  font-size: 25px;
+  font-weight: normal;
+  text-transform: capitalize;
+  line-height: 35px;
+  letter-spacing: 6px;
+  border-bottom: 2px solid #d4d4d4;
+  display: inline-block;
+}
+.section-title p {
+  color: #272727e5;
+  margin-bottom: 30px;
+  font-style: oblique;
+  letter-spacing: 2px;
+}
+.contact-us input,
+.contact-us textarea {
+  background: #fafafa;
+}
+.contact-us textarea {
+  min-height: 188px;
+  max-width: 100%;
+}
+.contact-us .map {
+  overflow: hidden;
+  border-radius: 4px;
+}
+/* ---------------end Contact_us------------------ */
+/* form error style */
+
+.errorlist {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    color: #cc0033;
+  }
+  
+  /*End form error style */
+  
+
+  

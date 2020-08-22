@@ -1,0 +1,44 @@
+{% load static %}
+<div class="card mb-4">
+    <h5 class="card-header">Search</h5>
+    <div class="card-body">
+        <form action="{% url 'BlogSearchResult' %}" method="GET">
+            <div class="input-group">
+                <input type="text" name="q" id="q" class="form-control" placeholder="Search in blog..." required>
+                <span class="input-group-append">
+                    <button class="btn btn-info" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="card my-4">
+    <h5 class="card-header">Side Widget</h5>
+    <div class="card-body">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, consectetur!
+    </div>
+</div>
+<div class="card my-4">
+    <h5 class="card-header">Categories</h5>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="list-unstyled mb-0">
+                    {% for cat in category_list %}
+                    <li>
+                        <div class="item d-flex justify-content-between ">
+                            <a class="text-decoration-none"
+                                href="{% url 'category-related-post' cat.categories__title %}">
+                                {{cat.categories__title}}
+                            </a>
+                            <span>{{cat.categories__title__count}}</span>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

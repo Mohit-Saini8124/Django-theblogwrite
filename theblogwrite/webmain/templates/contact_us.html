@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Contact Us | TheBlogWrite {% endblock title %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+{% if message.tags == 'error' %}
+<div class="alert alert-danger text-center m-2 ">
+    <strong>{{ message.tags }}!</strong> {{ message }}
+</div>
+{% else %}
+<div class="alert alert-{{ message.tags }} text-center m-2 ">
+    <strong>{{ message.tags }}!</strong> {{ message }}
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+<section class="contact-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="section-title">
+                    <h2><i class="fas fa-envelope-open-text"></i> Contact Us</h2>
+                    <p>We always strive to do better than we do. This is possible only if you have been associated with
+                        us and you. Your suggestion awfully important to us.</p>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="section-title">
+                    <h2><i class="fas fa-map-marker-alt fa-1x"></i> Our Address</h2>
+                    <div class="pl-2">
+                        <P>
+                            <i class="fas fa-map-marker mr-3"></i> Narayanpur<b>,</b> <b>UP 277503</b><b>,</b> IN
+                            <br>
+                            <i class="fas fa-envelope mr-3"></i> dv49886@gmail.com
+                            <br>
+                            <i class="fas fa-phone mr-3"></i> ( <b>+91</b> ) 7905 995 419
+                        </P>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="section-title">
+                    <h3 class=" text-monospace ">Send us a Message</h3>
+                </div>
+                <form action="{% url 'contact_us' %}" method="POST" class="mb-4 mb-lg-0">{% csrf_token %}
+                    <div class="form-row">
+                        <div class="col-md-6 form-group">
+                            <input type="text" name="c-name" class="form-control" id="name" placeholder="Your Name" />
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <input type="email" class="form-control" name="c-email" id="email"
+                                placeholder="Your Email" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="c-subject" id="subject" placeholder="Subject" />
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="c-message" placeholder="Type Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-outline-info font-weight-bold">Contact Now</button>
+                </form>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.413291286657!2d84.0293538144346!3d25.789935883623986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39926e91e8bf1d51%3A0x4f4c02e00b72611a!2sShiv%20Temple!5e0!3m2!1sen!2sin!4v1597892536002!5m2!1sen!2sin"
+                        width="100%" height="400" frameborder="0" style="border:0;" allowfullscreen=""
+                        aria-hidden="false" tabindex="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}

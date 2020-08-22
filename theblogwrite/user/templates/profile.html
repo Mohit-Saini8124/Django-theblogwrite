@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user.username}} | Profile {% endblock title %}
+{% block content %}
+
+<div class="container mt-4">
+    <div class="row my-2">
+        <div class="col-lg-4 pull-lg-8 text-center mb-5">
+            <img src="{{ user.profile.image.url }}" class="mx-auto img-fluid img-thumbnail rounded-circle img-block" alt="">
+        </div>
+        <div class="col-lg-8 push-lg-4">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active font-weight-bolder letter-spacing">Profile</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>
+                </li> -->
+                <li class="nav-item">
+                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link font-weight-bolder letter-spacing" >Edit</a>
+                </li>
+            </ul>
+            <div class="tab-content pb-3">
+                <div class="tab-pane active" id="profile">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            {% if user.profile.about_us %}
+                            <p class="text-monospace font-weight-bolder h5">About</p>
+                            <p class=" text-justify text-secondary">
+                                {{user.profile.about_us}}
+                            </p>
+                             {% endif %}
+                            {% if user.profile.hobbie %}
+                            <p class="text-monospace font-weight-bolder mt-1 h5">Hobbies</p>
+                            <p class=" text-justify text-secondary">
+                                {{user.profile.hobbie}}
+                            </p>
+                            {% endif %}
+                        </div>
+                        <div class="text-monospace font-weight-bolder col-md-6">
+                            <p class="letter-spacing">Recent-category</p>
+                             {% if category %}
+                                {% for cat in category %}
+                                    <a href="{% url 'category-related-post' cat.categories__title %}" class="tag tag-default tag-pill text-decoration-none text-lowercase">{{cat.categories__title}}</a>,
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="edit">
+                    <legend class="border-bottom mb-4"> Edit Profile</legend>
+                    <form method='POST' enctype="multipart/form-data">{% csrf_token%}
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Image</label>
+                            <div class="col-lg-9">
+                                {{p_form.image}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Username</label>
+                            <div class="col-lg-9">
+                                {{u_form.username}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">First name</label>
+                            <div class="col-lg-9">
+                                {{u_form.first_name}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Last name</label>
+                            <div class="col-lg-9">
+                                {{u_form.last_name}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                            <div class="col-lg-9">
+                                {{u_form.email}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Website</label>
+                            <div class="col-lg-9">
+                                {{p_form.website}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Social links</label>
+                            <div class="col-lg-9">
+                                {{p_form.facebookid}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label"></label>
+                            <div class="col-lg-6">
+                                {{p_form.twitterid}}
+                            </div>
+                            <div class="col-lg-3">
+                                {{p_form.instagramid}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">About</label>
+                            <div class="col-lg-9">
+                                {{p_form.about_us}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label">Hobbies</label>
+                            <div class="col-lg-9">
+                                {{p_form.hobbie}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-outline-info"> Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block footers %}
+<div class="font-small border-top letter-spacing">
+    <div class="footer-copyright text-center text-secondary py-3 ">© 2020 Copyright:
+        <a class="text-decoration-none text-info" href="https://theblogwrite.com "> theblogwrite.com </a>
+    </div>
+</div>
+{% endblock footers %}

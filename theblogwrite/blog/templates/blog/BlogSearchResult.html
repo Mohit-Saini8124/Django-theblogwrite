@@ -1,0 +1,47 @@
+{% extends 'blog/Baseblog.html' %} 
+{% load static %} 
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <h2>
+                        {{ queryset.count }} results found for: 
+                        <span class="text-dark font-italic font-weight-bolder">"{{request.GET.q}}"</span>
+                    </h2>
+                    <small>Request time (0.23 seconds)</small>
+
+                    <div class="search-form">
+                        <form action="{% url 'BlogSearchResult' %}" method="GET">
+                            <div class="input-group">
+                                <input type="text" name="q" id="q" class="form-control input-lg" placeholder="Search " required>
+                                <span class="input-group-append">
+                                    <button class="btn btn-info" type="submit">
+                                        <i class="small fas fa-search"></i> search
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                    {% for post in queryset %}
+                    <div class="hr-line-dashed"></div>
+                    <div class="search-result">
+                        <h3>
+                            <a class="text-decoration-none" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                        </h3>
+                        <!-- <a href="#" class="search-link"></a> -->
+                        <p>
+                            {{ post.content|safe|truncatewords_html:20 }}
+                        </p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %} 
+{% block footers %} {% endblock footers %}

@@ -1,0 +1,103 @@
+{% extends 'blog/Baseblog.html' %}
+{% load static %}
+{% block title %}
+{{post.title}} | Blog | TheBlogWrite
+{% endblock title %}
+
+{% block content %}
+<div class="container-fluid">
+
+  <ol class="breadcrumb mt-3 m-3">
+    <li class="breadcrumb-item">
+      <a href="{% url 'Home' %}">Home</a>
+    </li>
+    <li class="breadcrumb-item active">
+      <a href="{% url 'mainblog' %}">Blog</a>
+    </li>
+    <li class="breadcrumb-item active">{{post.slug}}</li>
+  </ol>
+  <div class="row px-3 mt-4">
+    <div class="col-lg-8">
+      <div class="rounded <!--border border-info-->">
+        <div class="p-2">
+          <h4 class="font-weight-bold">
+            {{post.title}}
+          </h4>
+          <div class="text-monospace font-weight-bolder mb-2">
+            Categories /
+            {% for categoryes in post.categories.all %}
+            <a class='text-decoration-none text-info' href="{% url 'category-related-post' categoryes.title %}">
+              {{categoryes}} </a>,
+            {% endfor %}
+          </div>
+          <div class="media border-bottom border-dark mb-1">
+            <img class="avatar d-flex mr-2 rounded-circle " src="{{ post.author.profile.image.url }}" alt="">
+            <div class="media-body">
+              <a href="{% url 'user-related-post' post.author.username %}" class="text-decoration-none font-weight-bold"
+                style="line-height: 10px;">{{post.author}}</a>
+              <p><i class="fa fa-calendar-alt"></i> {{post.date_posted|date:"d M, Y" }}</p>
+            </div>
+          </div>
+          <div>
+            {% if post.thumbnail %}
+            <img class="img-fluid post-details-card-img-top rounded-top" src="{{ post.thumbnail.url }}" alt="">
+            {% endif %}
+          </div>
+          <p class="blog-font mt-3 ">
+            {{post.content|safe}}
+          </p>
+          <!-- author section -->
+          <section class="author-box container mt-lg-5">
+            <div class="row rounded py-2" style="background-color: rgba(152, 185, 173, 0.7);">
+              <div class="col-lg-3 text-center">
+                <img class="mx-auto img-fluid img-thumbnail rounded-circle img-block"
+                  src="{{ post.author.profile.image.url }}">
+              </div> 
+              <div class="col-lg-9 mt-3 text-center">
+                <div class="author-box-intro small text-monospace">About the Author</div>
+                <div class="author-inline-block ">
+                  <h4 class="author-box-title">
+                    <span class="author-name text-responsive">{{post.author}}</span>
+                    <small class="author-social-links small">
+                    {% if post.author.profile.twitterid %}
+                      <a href="https://twitter.com/{{post.author.profile.twitterid}}" class="author-social-link twitter small"
+                        target="_blank">
+                        <i class="fab fa-2x fa-twitter "></i>
+                      </a>
+                      {% endif %}
+                      {% if post.author.profile.facebookid %}
+                      <a href="https://facebook.com/{{post.author.profile.facebookid}}" class="author-social-link facebook small" target="_blank">
+                        <i class="fab fa-2x fa-facebook "></i>
+                      </a>
+                      {% endif %}
+                      {% if post.author.profile.instagramid %}
+                      <a href="https://instagram.com/{{post.author.profile.instagramid}}" class="author-social-link facebook small" target="_blank">
+                        <i class="fab fa-2x fa-instagram "></i>
+                      </a>
+                      {% endif %}
+                    </small>
+                  </h4>
+                </div>
+                <div class="author-box-content text-left">
+                  <p> {{post.author.profile.about_us}}
+                    <a href="{% url 'user-related-post' post.author.username %}" class="text-decoration-none">View all
+                      posts by the Author</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- end author Section -->
+        </div>
+      </div>
+      {% include 'blog/comment.html' %}
+    </div>
+    <div class="col-lg-4">
+      {% include 'blog/sidebar.html' %}
+    </div>
+  </div>
+  {% include 'blog/recentpost.html' %}
+</div>
+{% endblock content %}
+
+<!-- width="{% widthratio 170 900 900 %} " -->

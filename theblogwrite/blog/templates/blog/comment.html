@@ -1,0 +1,33 @@
+<div class="comments mt-5">
+    <div class="comments-details">
+        <span class="total-comments comments-sort">Post Comments ({{ post.comments.count }})</span>
+    </div>
+    {% if request.user.is_authenticated %}
+    <div class="comment-box add-comment">
+        <span class="commenter-pic">
+            <img src="{{ user.profile.image.url }}" class="img-fluid">
+        </span>
+        <span class="commenter-name">
+            <form method="POST" action=".">{% csrf_token %}
+                {{ form.content }}
+                <button type="submit" class="btn btn-default">Comment</button>
+            </form>
+        </span>
+    </div>
+    {% else %}
+    <a href="{% url 'signin' %}" class="btn btn-light btn-outline-info font-weight-bold mb-3">Login to comment</a>
+    {% endif %}
+
+    {% for comment in post.get_comments %}
+    <div class="comment-box">
+        <span class="commenter-pic">
+            <img src="{{ comment.user.profile.image.url }}" class="img-fluid">
+        </span>
+        <span class="commenter-name">
+            <a href="#">{{ comment.user.username }}</a>
+            <span class="comment-time">{{ comment.timestamp|timesince }} ago</span>
+        </span>
+        <p class="comment-content ">{{ comment.content }}</p>
+    </div>
+    {% endfor %}
+</div>

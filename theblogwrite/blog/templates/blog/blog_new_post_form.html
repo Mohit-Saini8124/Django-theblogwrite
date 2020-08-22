@@ -1,0 +1,46 @@
+{% extends 'blog/Baseblog.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %} Create New post| Blog |  TheBlogWrite
+{% endblock title %} 
+{% block content %}
+
+<section id="blog" class="blog-mf sect-pt4 route">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="title-box text-center">
+          <h3 class="title-a">
+            Blog New Post
+          </h3>
+          <div class="line-mf"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="blog" class="blog-mf sect-pt4 route">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-blog">
+          <div class="card-body">
+            <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Blog Post</legend>
+                {{ form.media}}
+                {{ form|crispy}}
+              </fieldset>
+              <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Post</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

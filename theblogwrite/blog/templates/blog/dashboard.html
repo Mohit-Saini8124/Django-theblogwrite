@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %} Dashboard {% endblock title %}
+{% block content %} 
+<div class="container">
+    <div class="jumbotron jumbotron-fluid mt-4">
+        <div class="container text-center">
+            <h1 class="display-4 font-weight-bold ">Blog Dashboard</h1>
+            <p class="lead">Manage Your Posts</p>
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Post ID</th>
+                <th scope="col" class="px-5">Title</th>
+                <th scope="col" class=" text-right">Edit Your Blog Post </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for post in post_dashboard_items  %}
+            <tr>
+                <th scope="row">{{post.id}}</th>
+                <td class="px-5">{{post.title}} </td>
+                <td class=" text-right"> 
+                    <a class="btn btn-sm btn-primary" href="{% url 'post-update' post.pk post.slug %}"><i class="far fa-edit"></i> edit</a>
+                    <a class="btn btn-sm btn-danger my-1 " href="{% url 'post-delete' post.pk post.slug %}"><i class="fas fa-trash-alt"></i> excise</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
+{% block footers %}
+<footer class="page-footer font-small badge-secondary letter-spacing mt-5">
+  <div class="footer-copyright text-center text-white-50 py-4 ">© 2020 Copyright:
+    <a class="text-decoration-none text-white" href="#">  theblogwrite.com </a>
+  </div>
+</footer>
+{% endblock footers %}

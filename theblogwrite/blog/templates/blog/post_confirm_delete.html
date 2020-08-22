@@ -1,0 +1,32 @@
+{% extends 'blog/Baseblog.html' %}
+{% load static %}
+{% block title %} Delete post| Blog | TheBlogWrite
+{% endblock title %}
+
+
+{% block content %}
+<div class="container p-4 ">
+  <div class="row mt-5">
+    <div class="col-12 text-center">
+      <div class="alert alert-danger text-center">
+        <div class="small"> Are you sure to excise permanet!</div>
+      </div>
+    </div>
+    <div class="col-md-8 text-justify mt-5 ">
+        <p class="h4 text-capitalize text-dark my-1"> {{object.title}}</p>
+    </div>
+    <div class="col-md-4 mt-5">
+      <form method='POST'>{% csrf_token%}
+        <div class="form-group text-center">
+          <button type="submit" class="btn btn-outline-danger">Yes, Delete</button>
+          <a type="submit" class="btn btn-outline-secondary my-1" href="{% url 'dashboard' %}">No,
+            Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+{% block footers %}
+{% endblock footers %}
